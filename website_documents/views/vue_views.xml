@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="vue_frontend_layout" name="Vue frontend">
+        <t t-call="web.frontend_layout">
+            <t t-set="head">
+                <t t-call-assets="website_documents.assets_importmap" t-js="false"/>
+                <t t-call-assets="website_documents.assets_app" t-js="false"/>
+                <t t-out="head"/>
+                <t t-call-assets="website_documents.assets_importmap" t-css="false"/>
+            </t>
+            <t t-out="0"/>
+            <t t-call-assets="website_documents.assets_app" t-css="false"/>
+        </t>
+    </template>
+
+    <template id="portal_vue_documents" name="My Documents">
+        <t t-call="website_documents.vue_frontend_layout">
+            <div class="container" id="app">
+                <div>
+                    <div class="control-section file-overview">
+                        <div class="sample-container">
+                            <!-- https://stackoverflow.com/questions/41875921/v-bind-errorv-bind-is-an-undeclared-prefix -->
+                            <ejs-filemanager id="overview_file" v-bind='{ajaxSettings:ajaxSettings,view:view}' >
+                            </ejs-filemanager>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
